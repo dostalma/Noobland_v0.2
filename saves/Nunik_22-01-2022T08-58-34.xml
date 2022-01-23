@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PlayerCharacter id="1">
+    <Name>Nunik</Name>
+    <Level>1</Level>
+    <Race>Sexy Godess</Race>
+    <Class>Godess</Class>
+    <CurrentLocationId>2</CurrentLocationId>
+</PlayerCharacter>

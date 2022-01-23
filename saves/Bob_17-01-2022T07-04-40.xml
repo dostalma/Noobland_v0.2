@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PlayerCharacter id="1">
+    <Name>Bob</Name>
+    <Level>1</Level>
+    <Race>Dude</Race>
+    <Class>Bloke</Class>
+    <CurrentLocationId>1</CurrentLocationId>
+</PlayerCharacter>

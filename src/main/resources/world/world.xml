@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<world id="1">
+    <location id="1" name="Square">
+        <transition>2</transition>
+        <transition>5</transition>
+    </location>
+    <location id="2" name="Tavern">
+        <transition>1</transition>
+        <transition>3</transition>
+        <transition>4</transition>
+    </location>
+    <location id="3" name="Tavern kitchen">
+        <transition>2</transition>
+    </location>
+    <location id="4" name="Tavern private room">
+        <transition>2</transition>
+    </location>
+    <location id="5" name="Blacksmith">
+        <transition>1</transition>
+    </location>
+</world>
+
