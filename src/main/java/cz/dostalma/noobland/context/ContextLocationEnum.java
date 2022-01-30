@@ -2,6 +2,7 @@ package cz.dostalma.noobland.context;
 
 public enum ContextLocationEnum {
 
+    UNIVERSAL("universal"),
     MENU("menu"),
     WORLD("world"),
     BATTLE("battle"),

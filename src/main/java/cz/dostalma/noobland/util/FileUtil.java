@@ -20,8 +20,8 @@ public class FileUtil {
             Comparator<Path> fileNameDateComparator
                     = Comparator.comparing(
                     Path::getFileName, (s1, s2) -> {
-                        String dateStr1 = s1.toString().split("_")[1];
-                        String dateStr2 = s2.toString().split("_")[1];
+                        String dateStr1 = s1.toString().split("_")[2].split("\\.")[0];
+                        String dateStr2 = s2.toString().split("_")[2].split("\\.")[0];
 
                         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy'T'HH-mm-ss");
                         LocalDate date1 = LocalDate.parse(dateStr1, dtf);

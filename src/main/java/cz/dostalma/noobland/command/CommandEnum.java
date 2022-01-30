@@ -1,14 +1,31 @@
 package cz.dostalma.noobland.command;
 
+import cz.dostalma.noobland.context.ContextLocationEnum;
+
 public enum CommandEnum {
 
-    CREATE_CHARACTER,
-    SAVE_CHARACTER,
-    LOAD_CHARACTER,
-    SAVE_GAME,
-    LOAD_GAME,
-    QUIT_GAME,
+    EMPTY_COMMAND(ContextLocationEnum.UNIVERSAL),
+    WRONG_COMMAND(ContextLocationEnum.UNIVERSAL),
 
-    MOVE;
+    MENU(ContextLocationEnum.UNIVERSAL),
 
+    CREATE_CHARACTER(ContextLocationEnum.MENU),
+    SAVE_CHARACTER(ContextLocationEnum.MENU),
+    LOAD_CHARACTER(ContextLocationEnum.MENU),
+    CREATE_NEW_GAME(ContextLocationEnum.MENU),
+    SAVE_GAME(ContextLocationEnum.MENU),
+    LOAD_GAME(ContextLocationEnum.MENU),
+    QUIT_GAME(ContextLocationEnum.MENU),
+
+    MOVE(ContextLocationEnum.WORLD);
+
+    ContextLocationEnum contextLocationEnum;
+
+    CommandEnum(ContextLocationEnum contextLocationEnum) {
+        this.contextLocationEnum = contextLocationEnum;
+    }
+
+    public ContextLocationEnum getContextLocationEnum() {
+        return contextLocationEnum;
+    }
 }

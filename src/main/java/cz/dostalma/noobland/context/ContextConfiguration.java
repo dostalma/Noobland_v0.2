@@ -19,21 +19,19 @@ import static cz.dostalma.noobland.util.ConsoleUtil.writeLine;
 public class ContextConfiguration {
 
     @Autowired
-    ResourceLoader resourceLoader;
-
-    @Autowired
     GameContext gameContext;
 
     @Bean
     public void initializeContext() throws IOException, JAXBException {
-        File worldSettingFile = resourceLoader.getResource("classpath:world/world.xml").getFile();
-        JAXBContext jaxbContext = JAXBContext.newInstance(World.class);
-        World world = (World) jaxbContext.createUnmarshaller()
-                .unmarshal(new FileReader(worldSettingFile));
-        gameContext.setWorld(world);
-        gameContext.setContextLocation(ContextLocationEnum.MENU);
+//        File worldSettingFile = resourceLoader.getResource("classpath:world/world.xml").getFile();
+//        JAXBContext jaxbContext = JAXBContext.newInstance(World.class);
+//        World world = (World) jaxbContext.createUnmarshaller()
+//                .unmarshal(new FileReader(worldSettingFile));
+//        gameContext.setWorld(world);
 
+        gameContext.setContextLocation(ContextLocationEnum.MENU);
         ConsoleUtil.initiateContext(gameContext);
+        GameContext.setInstance(gameContext);
 
         writeLine("World context initialized");
     }

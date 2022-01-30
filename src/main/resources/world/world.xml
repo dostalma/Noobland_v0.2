@@ -1,22 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<world id="1">
-    <location id="1" name="Square">
-        <transition>2</transition>
-        <transition>5</transition>
-    </location>
-    <location id="2" name="Tavern">
-        <transition>1</transition>
-        <transition>3</transition>
-        <transition>4</transition>
-    </location>
-    <location id="3" name="Tavern kitchen">
-        <transition>2</transition>
-    </location>
-    <location id="4" name="Tavern private room">
-        <transition>2</transition>
-    </location>
-    <location id="5" name="Blacksmith">
-        <transition>1</transition>
-    </location>
+<world id="1" startingLocationId="1">
+    <locations>
+        <location id="1" name="Square">
+            <description>
+                This is the main square of the town.
+                The most noticeable building is a nearby tavern, decorated with multiple large windows and ornamented doors.
+                Across the square from the tavern lies shop of a local blacksmith.
+            </description>
+            <transition>2</transition>
+            <transition>5</transition>
+        </location>
+        <location id="2" name="Tavern">
+            <description>
+                The main room of the tavern consists of a bar that is mostly attended by an innkeeper and several tables.
+                Behind the bar there is a door to the tavern kitchen.
+                You can also see another door leading to a private room.
+            </description>
+            <transition>1</transition>
+            <transition>3</transition>
+            <transition>4</transition>
+        </location>
+        <location id="3" name="Tavern kitchen">
+            <description>
+                Kitchen is filled with cooking equipment and used by the innkeeper's wife.
+            </description>
+            <transition>2</transition>
+        </location>
+        <location id="4" name="Tavern private room">
+            <description>
+                In the small room there is a bed with a table and a wardrobe.
+            </description>
+            <transition>2</transition>
+        </location>
+        <location id="5" name="Blacksmith">
+            <description>
+                Shop of the local smith consists of smithing stuff.
+            </description>
+            <transition>1</transition>
+        </location>
+    </locations>
 </world>
 

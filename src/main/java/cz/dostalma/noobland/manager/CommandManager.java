@@ -36,16 +36,19 @@ public class CommandManager {
             return Command.EMPTY_COMMAND;
         }
 
-        // TODO extract parameters from input
         switch (parts[0].toLowerCase()) {
-            case "quit": case "quit game":
+            case "quit":
                 return commandFactory.createQuitGameCommand();
+            case "new":
+                return commandFactory.createCreateNewGameCommand();
             case "load":
                 if (parts.length < 2) {
                     writeLine("Error: Load command must have a saved character name parameter");
                     return Command.EMPTY_COMMAND;
                 }
-                return commandFactory.createLoadCharacterCommand(parts[1]);
+                return commandFactory.createLoadGameCommand(parts[1]);
+            case "save":
+                return commandFactory.createSaveGameCommand();
             case "go": case "goto":
                 return commandFactory.createMoveCommand(parts);
 

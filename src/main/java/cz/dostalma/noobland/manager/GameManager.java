@@ -4,7 +4,8 @@ import cz.dostalma.noobland.command.CommandEnum;
 import cz.dostalma.noobland.context.GameContext;
 import cz.dostalma.noobland.command.Command;
 import cz.dostalma.noobland.command.CommandFactory;
-import cz.dostalma.noobland.command.menu.MenuActionHandler;
+import cz.dostalma.noobland.command.handler.MenuActionHandler;
+import cz.dostalma.noobland.model.player.PlayerCharacter;
 import cz.dostalma.noobland.model.world.Location;
 import cz.dostalma.noobland.model.world.World;
 import org.slf4j.Logger;
@@ -14,15 +15,9 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-import java.io.File;
-import java.util.ArrayList;
+
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
 import static cz.dostalma.noobland.util.ConsoleUtil.*;
 
@@ -46,19 +41,7 @@ public class GameManager implements ApplicationRunner {
     public void start() throws JAXBException {
         writeLine("Starting a game");
 
-        Command createCharacterCommand = commandFactory.createCreateCharacterCommand();
-        createCharacterCommand.execute(null);
-//
-//        Command saveCharacterCommand = commandFactory.createSaveCharacterCommand();
-//        saveCharacterCommand.execute(null);
-
-        commandFactory.createLoadCharacterCommand().execute("Bob");
-
-        Command saveGameCommand = commandFactory.createSaveGameCommand();
-        saveGameCommand.execute(null);
-
-        // Initial context information
-        writeLine("You are at :" + gameContext.getPlayerCharacter().getLocation().getName());
+//        runTest();
 
         // run game
         runGameLoop();
@@ -78,13 +61,41 @@ public class GameManager implements ApplicationRunner {
                 break;
             }
 
-            command.execute(null);
+            command.execute(command);
         }
     }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         start();
+    }
+
+    private void runTest() {
+        Location location1 = new Location();
+        location1.setId("1");
+        location1.setName("abc");
+        location1.setDescription("......");
+
+        Location location2 = new Location();
+        location2.setId("2");
+        location2.setName("zxc");
+        location2.setDescription("sdasdsasd");
+
+        Location.LocationWrapper locations = new Location.LocationWrapper();
+        locations.setLocations(Arrays.asList(location1, location2));
+
+        World world = new World();
+        world.setId("1");
+        world.setLocationWrapper(locations);
+
+        PlayerCharacter pc = new PlayerCharacter.PlayerCharacterBuilder()
+                .withName("Bub")
+                .build();
+
+        gameContext.setWorld(world);
+        gameContext.setPlayerCharacter(pc);
+
+        commandFactory.createSaveGameCommand().execute(null);
     }
 
 //    private static void unMarshalingExample() throws JAXBException {

@@ -1,7 +1,8 @@
 package cz.dostalma.noobland.model.world;
 
 import javax.xml.bind.annotation.*;
-import java.util.List;
+
+import static cz.dostalma.noobland.model.world.Location.LocationWrapper;
 
 /**
  * Composite-sort-of class that holds information about the game world.
@@ -13,8 +14,10 @@ public class World {
 
     @XmlAttribute(name = "id")
     private String id;
-    @XmlElement(name = "location")
-    private List<Location> locations;
+    @XmlAttribute(name = "startingLocationId")
+    private String startingLocationId;
+    @XmlElement(name = "locations")
+    private LocationWrapper locationWrapper;
 
     public String getId() {
         return id;
@@ -24,11 +27,19 @@ public class World {
         this.id = id;
     }
 
-    public List<Location> getLocations() {
-        return locations;
+    public String getStartingLocationId() {
+        return startingLocationId;
     }
 
-    public void setLocations(List<Location> locations) {
-        this.locations = locations;
+    public void setStartingLocationId(String startingLocationId) {
+        this.startingLocationId = startingLocationId;
+    }
+
+    public LocationWrapper getLocationWrapper() {
+        return locationWrapper;
+    }
+
+    public void setLocationWrapper(LocationWrapper locations) {
+        this.locationWrapper = locations;
     }
 }
